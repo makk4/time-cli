@@ -1,7 +1,12 @@
 package cmd
 
 import (
+	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"log"
+	"os/user"
+	"path/filepath"
 	"strings"
 	"time"
 
@@ -38,6 +43,15 @@ multi line descrp`,
 				project.tags = append(project.tags, string([]rune(s)[1:]))
 			}
 		}
+
+		usr, err := user.Current()
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		file, _ := json.MarshalIndent(project, "", " ")
+
+		_ = ioutil.WriteFile(filepath.Join(usr.HomeDir, "test.json"), file, 0644)
 
 		fmt.Println(project.name, project.tags, "startet @ ", project.startTime.Format("2006-01-02 15:04:05"))
 
