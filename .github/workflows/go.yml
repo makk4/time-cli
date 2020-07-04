@@ -28,7 +28,6 @@ jobs:
         go get -v -t -d ./...
         if [ -f go.mod ]; then
             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
-            go mod init
         fi
 
     - name: Build
