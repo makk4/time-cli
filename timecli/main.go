@@ -1,6 +1,6 @@
 package main
 
-import "time-cli/cmd"
+import "timecli/cmd"
 
 func main() {
 	cmd.Execute()

@@ -24,7 +24,7 @@ jobs:
 
     - name: Get dependencies
       run: |
-        cd src/
+        cd timecli/
         go get -v -t -d ./...
         if [ -f go.mod ]; then
             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
@@ -32,10 +32,10 @@ jobs:
 
     - name: Build
       run: |
-        cd src/
+        cd timecli/
         go build -v .
 
     - name: Test
       run: |
-        cd src/
+        cd timecli/
         go test -v .

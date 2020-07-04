@@ -1,4 +1,4 @@
-module time-cli
+module timecli
 
 go 1.14
 

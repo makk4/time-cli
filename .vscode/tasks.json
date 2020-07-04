@@ -2,19 +2,42 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "echo",
+            "label": "refresh dependencies",
             "type": "shell",
             "command": "go mod tidy",
-            "windows": {
-                "command": "go mod tidy"
-            },
             "problemMatcher": [],
             "group": {
                 "kind": "build",
                 "isDefault": true
             },
             "options": {
-                "cwd": "${workspaceFolder}/src"
+                "cwd": "${workspaceFolder}/time"
+              }
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "go build -v .",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/timecli"
+              }
+        },
+        {
+            "label": "go test",
+            "type": "shell",
+            "command": "go test -v .",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/timecli"
               }
         }
     ]
