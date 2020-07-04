@@ -39,3 +39,6 @@ jobs:
       run: |
         cd src/
         go test -v .
+        
+    - name: Super-Linter
+      uses: github/super-linter@v3.2.0
