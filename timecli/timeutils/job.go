@@ -16,21 +16,6 @@ type Job struct {
 	Description string      `json:"description"`
 }
 
-// GetProjectName test
-func GetProjectName(j *Job) string {
-	return j.ProjectName
-}
-
-// GetTags test
-func GetTags(j *Job) []string {
-	return j.Tags
-}
-
-// GetStartTime test
-func GetStartTime(j *Job) string {
-	return j.StartTime.String()
-}
-
 // StartJob test
 func StartJob(j *Job, startTime time.Time, projectName string, tags []string) {
 	j.ID = ksuid.New()

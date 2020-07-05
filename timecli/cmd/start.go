@@ -2,10 +2,12 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 	"strings"
 	"time"
 	io "timecli/ioutils"
 	job "timecli/timeutils"
+	project "timecli/timeutils"
 
 	"github.com/spf13/cobra"
 )
@@ -18,8 +20,15 @@ var startCmd = &cobra.Command{
 multi line descrp`,
 	Run: func(cmd *cobra.Command, args []string) {
 
+		var jsonFile = io.ReadFile()
+
+		if jsonFile.RunningJob != "" {
+			fmt.Println("Job already startet")
+			os.Exit(0)
+		}
+
 		var j job.Job
-		// var p project.Project
+
 		tags := []string{}
 
 		for i, s := range args {
@@ -30,9 +39,26 @@ multi line descrp`,
 
 		job.StartJob(&j, time.Now(), args[0], tags)
 
-		io.WriteJob(j)
+		jsonFile.RunningJob = j.ID.String()
 
-		fmt.Println(job.GetProjectName(&j), job.GetTags(&j), "startet @ ", job.GetStartTime(&j))
+		var newProject bool = true
+		for i := range jsonFile.Projects {
+			if jsonFile.Projects[i].Name == j.ProjectName {
+				jsonFile.Projects[i].Jobs = append(jsonFile.Projects[i].Jobs, j)
+				newProject = false
+			}
+		}
+
+		if newProject == true {
+			var p project.Project
+			p.Name = j.ProjectName
+			p.Jobs = append(p.Jobs, j)
+			jsonFile.Projects = append(jsonFile.Projects, p)
+		}
+
+		io.WriteFile(jsonFile)
+
+		fmt.Println(j.ProjectName, j.Tags, "startet @ ", j.StartTime)
 
 	},
 }

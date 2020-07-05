@@ -3,7 +3,7 @@ package ioutils
 import (
 	"reflect"
 	"testing"
-	job "timecli/timeutils"
+	timetable "timecli/timeutils"
 )
 
 func Test_getUserPath(t *testing.T) {
@@ -22,25 +22,25 @@ func Test_getUserPath(t *testing.T) {
 	}
 }
 
-func Test_readFile(t *testing.T) {
+func TestReadFile(t *testing.T) {
 	tests := []struct {
 		name string
-		want JSONFile
+		want timetable.TimeTable
 	}{
 		// TODO: Add test cases.
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := readFile(); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("readFile() = %v, want %v", got, tt.want)
+			if got := ReadFile(); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("ReadFile() = %v, want %v", got, tt.want)
 			}
 		})
 	}
 }
 
-func Test_writeFile(t *testing.T) {
+func TestWriteFile(t *testing.T) {
 	type args struct {
-		jsonFile JSONFile
+		jsonFile timetable.TimeTable
 	}
 	tests := []struct {
 		name string
@@ -50,37 +50,7 @@ func Test_writeFile(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			writeFile(tt.args.jsonFile)
-		})
-	}
-}
-
-func TestWriteJob(t *testing.T) {
-	type args struct {
-		j job.Job
-	}
-	tests := []struct {
-		name string
-		args args
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			WriteJob(tt.args.j)
-		})
-	}
-}
-
-func TestReadJob(t *testing.T) {
-	tests := []struct {
-		name string
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			ReadJob()
+			WriteFile(tt.args.jsonFile)
 		})
 	}
 }

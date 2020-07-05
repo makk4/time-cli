@@ -1,7 +1,11 @@
 package cmd
 
 import (
+	"fmt"
+	"os"
+	"time"
 	io "timecli/ioutils"
+	job "timecli/timeutils"
 
 	"github.com/spf13/cobra"
 )
@@ -17,12 +21,29 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		// var j job.Job
 
-		io.ReadJob()
-		// io.WriteJob(&j)
+		var jsonFile = io.ReadFile()
+		var j job.Job
 
-		// fmt.Println(job.GetName(&j), job.GetTags(&j), "stoped @ ", job.GetStartTime(&j))
+		if jsonFile.RunningJob == "" {
+			fmt.Println("No Job startet")
+			os.Exit(0)
+		}
+
+		jsonFile.RunningJob = ""
+
+		for i := range jsonFile.Projects {
+			for k := range jsonFile.Projects[i].Jobs {
+				if jsonFile.Projects[i].Jobs[k].ID.String() == jsonFile.RunningJob {
+					j = jsonFile.Projects[i].Jobs[k]
+					jsonFile.Projects[i].Jobs[k].EndTime = time.Now()
+				}
+			}
+		}
+
+		io.WriteFile(jsonFile)
+
+		fmt.Println(j.ProjectName, j.Tags, "stoped @ ", j.StartTime)
 
 	},
 }
