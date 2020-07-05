@@ -20,7 +20,7 @@ func getUserPath() string {
 	return filepath.Join(usr.HomeDir, "timeapp.json")
 }
 
-// ReadFile test
+// ReadFile reads the file and converts to TimeTable
 func ReadFile() timetable.TimeTable {
 	file, err := os.Open(getUserPath())
 	if err != nil {
@@ -38,7 +38,7 @@ func ReadFile() timetable.TimeTable {
 
 }
 
-// WriteFile test
+// WriteFile writes TimeTable to file
 func WriteFile(jsonFile timetable.TimeTable) {
 	file, err := json.Marshal(&jsonFile)
 	if err != nil {

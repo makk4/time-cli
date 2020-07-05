@@ -1,6 +1,6 @@
 package timeutils
 
-// TimeTable test
+// TimeTable the root file structure
 type TimeTable struct {
 	Name         string    `json:"name"`
 	MonthlyHours int       `json:"monthlyhours"`

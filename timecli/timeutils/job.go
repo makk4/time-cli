@@ -6,7 +6,7 @@ import (
 	"github.com/segmentio/ksuid"
 )
 
-//Job test
+// Job a single job unit structure
 type Job struct {
 	StartTime   time.Time   `json:"starttime"`
 	EndTime     time.Time   `json:"endtime"`
@@ -14,6 +14,11 @@ type Job struct {
 	ProjectName string      `json:"name"`
 	Tags        []string    `json:"tags"`
 	Description string      `json:"description"`
+}
+
+// GetString returns pretty string representation
+func GetString(j Job) string {
+	return j.ID.String() + "   Project: " + j.ProjectName + "   start: " + j.StartTime.String() + "   end: " + j.EndTime.String()
 }
 
 // StartJob test

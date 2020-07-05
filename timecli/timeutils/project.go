@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-//Project test
+//Project a Project structure
 type Project struct {
 	Name         string    `json:"name"`
 	Company      string    `json:"company"`
