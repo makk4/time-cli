@@ -1,7 +1,7 @@
 package cmd
 
 import (
-	"fmt"
+	io "timecli/ioutils"
 
 	"github.com/spf13/cobra"
 )
@@ -17,7 +17,13 @@ Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("stop called")
+		// var j job.Job
+
+		io.ReadJob()
+		// io.WriteJob(&j)
+
+		// fmt.Println(job.GetName(&j), job.GetTags(&j), "stoped @ ", job.GetStartTime(&j))
+
 	},
 }
 

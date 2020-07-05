@@ -11,13 +11,13 @@
                 "isDefault": true
             },
             "options": {
-                "cwd": "${workspaceFolder}/time"
+                "cwd": "${workspaceFolder}/timecli"
               }
         },
         {
             "label": "build",
             "type": "shell",
-            "command": "go build -v .",
+            "command": "go build -v ./...",
             "problemMatcher": [],
             "group": {
                 "kind": "build",
@@ -30,7 +30,7 @@
         {
             "label": "go test",
             "type": "shell",
-            "command": "go test -v .",
+            "command": "go test -v ./...",
             "problemMatcher": [],
             "group": {
                 "kind": "build",
