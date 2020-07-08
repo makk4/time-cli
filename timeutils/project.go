@@ -4,8 +4,8 @@ import (
 	"time"
 )
 
-//Project a Project structure
-type Project struct {
+//Project a 2Project structure
+type Project2 struct {
 	Name         string    `json:"name"`
 	Company      string    `json:"company"`
 	Tags         []string  `json:"tags"`

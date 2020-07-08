@@ -3,9 +3,7 @@ package cmd
 import (
 	"fmt"
 	"os"
-	"strings"
-	"time"
-	io "timecli/ioutils"
+	io "timecli/internals"
 	job "timecli/timeutils"
 	project "timecli/timeutils"
 
@@ -29,17 +27,7 @@ multi line descrp`,
 
 		var j job.Job
 
-		tags := []string{}
-
-		for i, s := range args {
-			if i > 0 && strings.HasPrefix(s, "+") {
-				tags = append(tags, string([]rune(s)[1:]))
-			}
-		}
-
-		job.StartJob(&j, time.Now(), args[0], tags)
-
-		jsonFile.RunningJob = j.ID.String()
+		jsonFile.RunningJob = j.StartJob(args)
 
 		var newProject bool = true
 		for i := range jsonFile.Projects {
@@ -55,7 +43,7 @@ multi line descrp`,
 			p.Jobs = append(p.Jobs, j)
 			jsonFile.Projects = append(jsonFile.Projects, p)
 		}
-
+		jsonFile.AddProject()
 		io.WriteFile(jsonFile)
 
 		fmt.Println(j.ProjectName, j.Tags, "startet @ ", j.StartTime)
