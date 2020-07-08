@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 	"time"
-	io "timecli/ioutils"
-	job "timecli/timeutils"
+	io "time-cli/ioutils"
+	job "time-cli/timeutils"
 
 	"github.com/spf13/cobra"
 )

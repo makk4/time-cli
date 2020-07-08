@@ -3,9 +3,9 @@ package cmd
 import (
 	"fmt"
 	"os"
-	io "timecli/internals"
-	job "timecli/timeutils"
-	project "timecli/timeutils"
+	io "time-cli/internals"
+	job "time-cli/timeutils"
+	project "time-cli/timeutils"
 
 	"github.com/spf13/cobra"
 )

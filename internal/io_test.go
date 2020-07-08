@@ -3,7 +3,7 @@ package internal
 import (
 	"reflect"
 	"testing"
-	timetable "timecli/timeutils"
+	timetable "time-cli/timeutils"
 )
 
 func Test_getUserPath(t *testing.T) {

@@ -24,7 +24,6 @@ jobs:
 
     - name: Get dependencies
       run: |
-        cd timecli/
         go get -v -t -d ./...
         if [ -f go.mod ]; then
             curl https://raw.githubusercontent.com/golang/dep/master/install.sh | sh
@@ -32,12 +31,10 @@ jobs:
 
     - name: Build
       run: |
-        cd timecli/
         go build -v .
 
     - name: Test
       run: |
-        cd timecli/
         go test -v .
 
     # - name: Super-Linter

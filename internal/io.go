@@ -8,7 +8,7 @@ import (
 	"os"
 	"os/user"
 	"path/filepath"
-	timetable "timecli/timeutils"
+	timetable "time-cli/timeutils"
 )
 
 func getUserPath() string {
