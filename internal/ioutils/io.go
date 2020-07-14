@@ -29,11 +29,16 @@ func ReadFile() timetable.TimeTable {
 	}
 	defer file.Close()
 
-	byteValue, _ := ioutil.ReadAll(file)
-
+	byteValue, err := ioutil.ReadAll(file)
+	if err != nil {
+		fmt.Println(err)
+	}
 	var jsonFile timetable.TimeTable
 
-	json.Unmarshal(byteValue, &jsonFile)
+	err = json.Unmarshal(byteValue, &jsonFile)
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	return jsonFile
 
@@ -45,5 +50,8 @@ func WriteFile(jsonFile timetable.TimeTable) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	_ = ioutil.WriteFile(getUserPath(), file, 0644)
+	err = ioutil.WriteFile(getUserPath(), file, 0644)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
