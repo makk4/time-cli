@@ -1,4 +1,4 @@
-module time-cli
+module github.com/makk4/time-cli
 
 go 1.14
 

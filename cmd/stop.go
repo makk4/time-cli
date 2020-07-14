@@ -4,8 +4,9 @@ import (
 	"fmt"
 	"os"
 	"time"
-	io "time-cli/ioutils"
-	job "time-cli/timeutils"
+
+	io "github.com/makk4/time-cli/ioutils"
+	job "github.com/makk4/time-cli/timeutils"
 
 	"github.com/spf13/cobra"
 )
