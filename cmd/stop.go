@@ -5,8 +5,8 @@ import (
 	"os"
 	"time"
 
-	io "github.com/makk4/time-cli/ioutils"
-	job "github.com/makk4/time-cli/timeutils"
+	io "github.com/makk4/time-cli/internal/ioutils"
+	job "github.com/makk4/time-cli/internal/timeutils"
 
 	"github.com/spf13/cobra"
 )
@@ -30,9 +30,9 @@ var stopCmd = &cobra.Command{
 
 		for i := range jsonFile.Projects {
 			for k := range jsonFile.Projects[i].Jobs {
-				if jsonFile.Projects[i].Jobs[k].ID.String() == jsonFile.RunningJob {
+				if jsonFile.Projects[i].Jobs[k].ID == jsonFile.RunningJob {
 					j = jsonFile.Projects[i].Jobs[k]
-					jsonFile.Projects[i].Jobs[k].EndTime = time.Now()
+					jsonFile.Projects[i].Jobs[k].EndTime = time.Now().String()
 				}
 			}
 		}

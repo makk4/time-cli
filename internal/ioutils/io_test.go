@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	timetable "github.com/makk4/time-cli/timeutils"
+	timetable "github.com/makk4/time-cli/internal/timeutils"
 )
 
 func Test_getUserPath(t *testing.T) {

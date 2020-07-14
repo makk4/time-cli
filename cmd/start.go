@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
-	io "github.com/makk4/time-cli/internals/ioutils"
-	job "github.com/makk4/time-cli/internals/timeutils"
-	project "github.com/makk4/time-cli/internals/timeutils"
+	io "github.com/makk4/time-cli/internal/ioutils"
+	job "github.com/makk4/time-cli/internal/timeutils"
+	project "github.com/makk4/time-cli/internal/timeutils"
 
 	"github.com/spf13/cobra"
 )
@@ -28,7 +28,7 @@ multi line descrp`,
 
 		var j job.Job
 
-		jsonFile.RunningJob = j.StartJob(args)
+		jsonFile.RunningJob = j.StartJob(args).ID
 
 		var newProject bool = true
 		for i := range jsonFile.Projects {
@@ -44,7 +44,7 @@ multi line descrp`,
 			p.Jobs = append(p.Jobs, j)
 			jsonFile.Projects = append(jsonFile.Projects, p)
 		}
-		jsonFile.AddProject()
+		jsonFile.AddProject(j.ProjectName)
 		io.WriteFile(jsonFile)
 
 		fmt.Println(j.ProjectName, j.Tags, "startet @ ", j.StartTime)

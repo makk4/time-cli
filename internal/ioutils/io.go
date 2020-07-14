@@ -9,7 +9,7 @@ import (
 	"os/user"
 	"path/filepath"
 
-	timetable "github.com/makk4/time-cli/timeutils"
+	timetable "github.com/makk4/time-cli/internal/timeutils"
 )
 
 func getUserPath() string {
