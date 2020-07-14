@@ -36,10 +36,3 @@ jobs:
     - name: Test
       run: |
         go test -v .
-
-    # - name: Super-Linter
-    #   uses: github/super-linter@v3.2.0
-    #   env:
-    #       VALIDATE_ALL_CODEBASE: true
-    #       DEFAULT_BRANCH: master
-    #       GOROOT: ""
